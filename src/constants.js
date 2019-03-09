@@ -15,4 +15,4 @@ const replacements = [
     ["folks", "everyone", "team", "y'all"],
     ["workforce", "workers", "team"],
     ["their", "theirs", "one's"]
-]
+];
