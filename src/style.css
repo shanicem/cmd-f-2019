@@ -25,4 +25,11 @@
 button {
 	display: flex;
 	justify-content: end;
+	position: relative;
+	display: inline-block;
+	font-size: 22px;
+	border-radius: 6px;
+	text-align: center;
+	transition: bottom 0.01s linear;
+	box-shadow: 3px 4px 0px #87a86f;
 }

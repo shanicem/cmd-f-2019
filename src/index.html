@@ -26,6 +26,13 @@
 		<meta charset="utf-8" />
 	</head>
 	<body>
+		<a href="https://github.com/shanicem/cmd-f-2019"
+			><img
+				style="position: absolute; top: 0; left: 0; border: 0; width: 149px; height: 149px;"
+				src="http://aral.github.com/fork-me-on-github-retina-ribbons/left-dusk-blue@2x.png"
+				alt="Fork me on GitHub"
+		/></a>
+
 		<div class="main-page">
 			<div class="flex-container">
 				<div>
@@ -50,8 +57,8 @@
 							<div style="display: flex; justify-content: flex-end;">
 								<button
 									type="button"
-									class="btn btn-primary"
-									onclick="processInput(); toggleResults(); goToResults()"
+									class="btn btn-info"
+									onclick="saveInput(); toggleResults(); goToResults()"
 									style="margin-top: 20px"
 									data-toggle="collapse"
 									data-target="#sidebar-collapse"
@@ -67,15 +74,23 @@
 				>
 					<div style="width: 500px; height: 700px; margin: auto">
 						<div class="sidenav collapse" id="sidebar-collapse">
-							<p class="navbar-text p-4">Title</p>
+							<p class="navbar-text p-4">Probably don't need Title</p>
 							<br />
-							<p class="navbar-text p-4">More words Bottom</p>
+							<p class="navbar-text p-4">
+								lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								suspendisse tempor pharetra tortor ac dictum. nunc bibendum
+								sapien posuere ligula imperdiet, a posuere ex mollis. quisque
+								molestie viverra sem eu aliquet. vivamus ligula purus, euismod
+								eu euismod sed, tincidunt nec tortor.
+							</p>
 							<div class="sidebar-results"></div>
 							<button
 								type="button"
-								class="btn btn-secondary"
-								onclick="processInput(); toggleResults(); goToSearch()"
+								class="btn btn-info"
+								onclick="processInput(); goToSearch(); toggleResults()"
 								style="margin-top: 20px"
+								data-toggle="collapse"
+								data-target="#sidebar-collapse"
 							>
 								Go back to Search
 							</button>
@@ -96,5 +111,24 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<script src="Main.js"></script>
+		<script>
+			function saveInput() {
+				// Input gathered from form
+				var input = document.getElementById("userInput").value
+			}
+
+			function toggleResults() {
+				$(".sidebar").toggleClass("w-25")
+				$(".main-page").toggleClass("w-75")
+			}
+
+			function goToResults() {
+				window.scrollTo(0, document.body.scrollHeight)
+			}
+
+			function goToSearch() {
+				window.scrollTo(0, 0)
+			}
+		</script>
 	</body>
 </html>
