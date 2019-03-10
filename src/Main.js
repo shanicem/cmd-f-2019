@@ -49,14 +49,14 @@ function clearSearchResults() {
 }
 
 function processInput() {
-    let input = document.getElementById("userInput").value;
-    console.log("Input: " + input + "\n");
-    let allWords = parse(input);
-    let offWords = detectOffensiveWords(allWords);
+    let inputText = document.getElementById("userInput").value;
+    console.log("Input: " + inputText + "\n");
+    let inputWords = parse(inputText);
+    let offWords = detectOffensiveWords(inputWords);
     let textOutput;
     if (offWords.length > 0) {
         createExplanationAndSuggestionBlocks(offWords);
-        textOutput = "<p>" + highlightWords(offWords, allWords) + "</p>";
+        textOutput = "<p>" + highlightWords(offWords, inputWords) + "</p>";
     } else {
         let root = document.getElementById("sidebar-results");
         let noOffWordsText = "Awesome, your text is already inclusive!";
@@ -65,6 +65,11 @@ function processInput() {
         textOutput = "<p>Great job! Your text seems to be pretty friendly :)</p>";
     }
     $("#text-output").append(textOutput);
+
+    // Enable popovers
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    });
 }
 
 function toggleResults() {
@@ -170,10 +175,7 @@ function getSuggestionText(word) {
     const index = offensiveWords[word][1];
     const suggestedReplacements = replacements[index];
 
-    return (
-      "Try using these more inclusive terms instead:\n" +
-      suggestedReplacements.join(", ")
-    );
+    return "Try using these more inclusive terms instead: " + suggestedReplacements.join(", ");
   }
 
   return "";
@@ -198,7 +200,8 @@ function highlightWords(offensiveWords, originalOutput) {
 
   const processedWords = originalOutput.map((word, i) => {
     if (indexes.includes(i)) {
-      return '<mark>' + word + "</mark>";
+        const content = getSuggestionText(word);
+        return '<mark data-toggle="popover" data-html="true" data-content="' + content + '" data-trigger="click">' + word + '</mark>';
     }
 
     return word;
