@@ -3,23 +3,22 @@ const { offensiveWords, explanations, replacements } = constants;
 
 /** Main functionality for inclusive-language text checker */
 
-let example = "I will print all these bossy ,words and n0mber-5, shesaid!";
-
+// Returns an array of words without punctuation at the start and end of strings
 function parse(input) {
-  // split input: string by spaces
-  let wordsWithoutSpace = input.split(" ");
+    let wordsWithoutPunctuation = removePunctuation(input);
 
-  // remove punctuation from word
-  let cleansedWords = removePunctuationFrom(wordsWithoutSpace);
-  return wordsWithoutSpace;
+    let wordsSplitBySpaces = wordsWithoutPunctuation.split(" ");
+
+    let finalWords = removeEmptyStrings(wordsSplitBySpaces);
+    return finalWords;
 }
 
-function removePunctuationFrom(words) {
-  let result = [];
-  words.forEach(word => {
-    word.split(/\b/);
-  });
-  return result;
+function removePunctuation(input) {
+    return input.replace(/\b[-.,()&$#!\[\]{}"']+\B|\B[-.,()&$#!\[\]{}"']+\b/g, "");
+}
+
+function removeEmptyStrings(input) {
+    return input.filter(word => word !== "");
 }
 
 /*
@@ -66,8 +65,21 @@ function getSuggestionText(word) {
   return "";
 }
 
+
+// Tests for parse
+let example = "I will print all these ,words and n0mber-5, shesaid!";
+let example2 = ".wrods!";
+let example3 = " y.   use";
+
 let parsedOutput = parse(example);
+let parsedOutput2 = parse(example2);
+let parsedOutput3 = parse(example3);
+console.log(parsedOutput);
+console.log(parsedOutput2);
+console.log(parsedOutput3);
 parsedOutput.forEach(word => console.log(word));
+
+// Tests for offensive word detection
 console.log(detectOffensiveWords(parsedOutput));
 console.log(getExplanation("bossy"));
 console.log(getSuggestionText("bossy"));
