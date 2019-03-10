@@ -54,7 +54,7 @@
               <button
                 type="button"
                 class="btn btn-primary"
-                onclick="saveInput(); showResults();"
+                onclick="saveInput(); toggleResults();"
                 style="margin-top: 20px"
                 data-toggle="collapse"
                 data-target="#demo, #sidebar-collapse"
@@ -68,7 +68,12 @@
       </div>
     </div>
 
-    <div class="sidenav collapse" id="sidebar-collapse"></div>
+    <div class="sidenav collapse" id="sidebar-collapse">
+      <p class="navbar-text p-4">Title</p>
+      <br />
+      <p class="navbar-text p-4">More words here</p>
+      <div class="sidebar-results"></div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -81,9 +86,9 @@
         alert(input);
       }
 
-      function showResults() {
-        $(".sidenav").addClass("w-25");
-        $(".main-page").addClass("w-75");
+      function toggleResults() {
+        $(".sidenav").toggleClass("w-25");
+        $(".main-page").toggleClass("w-75");
       }
     </script>
   </body>
