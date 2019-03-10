@@ -58,6 +58,7 @@ var inputWords, textOutput;
 
 // Force scrolling to top on refresh
 window.onbeforeunload = function () {
+    clearSearchResults();
     window.scrollTo(0, 0);
 }
 
