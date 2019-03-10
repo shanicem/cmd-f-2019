@@ -35,17 +35,19 @@
 		style="background-image: url('Plants.png'), url('sitting-1.png'); background-repeat: no-repeat; 
 		background-position: center center;"
 	>
-		<h1
-			style="padding-top: 50px; font-family: Markazi Text, serif; font-size: 100px; display: flex; justify-content: center;"
-		>
-			friendliHer*
-		</h1>
+		<div>
+			<h1
+				style="padding-top: 50px; font-family: Pacifco, serif; font-size: 100px; display: flex; justify-content: center;"
+			>
+				friendliHer*
+			</h1>
+		</div>
 
 		<div class="input">
 			<form class="ui form">
 				<div class="form-group">
 					<textarea
-						name="input"
+						id="userInput"
 						class="form-control"
 						id="exampleFormControlTextarea1"
 						rows="3"
@@ -55,6 +57,7 @@
 					<button
 						class="ui primary button right floated"
 						type="submit"
+						onclick="saveInput();"
 						style="margin-top: 20px"
 					>
 						Submit
@@ -80,10 +83,11 @@
 			crossorigin="anonymous"
 		></script>
 		<script>
-			$("form").submit(function(event) {
-				// TODO get input and put into array
-				alert(JSON.stringify(event))
-			})
+			function saveInput() {
+				// Input gathered from form
+				var input = document.getElementById("userInput").value
+				alert(input)
+			}
 		</script>
 	</body>
 </html>
