@@ -84,7 +84,27 @@
 								data-target="#sidebar-collapse, #text-field-collapse"
 							>
 								Go back to submission
-							</button>
+              </button>
+              <button
+								type="button"
+                class="btn btn-info replace-btn"
+                data-toggle="tooltip"
+                title="Automatically replace all highlighted terms with first suggestion"
+                data-placement="top"
+								onclick="autoReplace()"
+								style="margin-top: 20px"
+							>
+								Auto Replace
+              </button>
+              <button
+              type="button"
+              class="btn btn-info copy-btn"
+              onclick="copyToClipboard()"
+              disabled="true"
+              style="margin-top: 20px"
+            >
+              Copy to Clipboard
+            </button>
 						</div>
 					</div>
 				</section>

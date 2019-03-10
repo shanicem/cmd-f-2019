@@ -41,19 +41,23 @@ const replacements = [
   ["grandparents", "people on fixed incomes"]
 ];
 
+// Global variables
+var inputWords, textOutput;
+
 function clearSearchResults() {
     $("#text-output").empty();
     $("#sidebar-results").empty();
     $("#userInput").val('');
     $("#userInput").placeholder = "We will make your text more inclusive!";
+    $('.replace-btn').prop('disabled', false);
+    $('.copy-btn').prop('disabled', true);
 }
 
 function processInput() {
     let inputText = document.getElementById("userInput").value;
     console.log("Input: " + inputText + "\n");
-    let inputWords = parse(inputText);
+    inputWords = parse(inputText);
     let offWords = detectOffensiveWords(inputWords);
-    let textOutput;
     if (offWords.length > 0) {
         createExplanationAndSuggestionBlocks(offWords);
         textOutput = "<p>" + highlightWords(offWords, inputWords) + "</p>";
@@ -68,7 +72,8 @@ function processInput() {
 
     // Enable popovers
     $(function () {
-        $('[data-toggle="popover"]').popover()
+        $('[data-toggle="popover"]').popover();
+        $('[data-toggle="tooltip"]').tooltip();
     });
 }
 
@@ -167,15 +172,22 @@ function getExplanation(word) {
   return "";
 }
 
+function getReplacements(word) {
+    if (offensiveWords.hasOwnProperty(word)) {
+        const index = offensiveWords[word][1];
+        return replacements[index];
+    }
+
+    return null;
+}
+
 /*
     Returns a string to display suggested replacements for an offensive word
 */
 function getSuggestionText(word) {
-  if (offensiveWords.hasOwnProperty(word)) {
-    const index = offensiveWords[word][1];
-    const suggestedReplacements = replacements[index];
-
-    return "Try using these more inclusive terms instead: " + suggestedReplacements.join(", ");
+    const wordReplacements = getReplacements(word);
+  if (wordReplacements) {
+    return "Try using these more inclusive terms instead: <br>" + wordReplacements.join(", ");
   }
 
   return "";
@@ -201,13 +213,46 @@ function highlightWords(offensiveWords, originalOutput) {
   const processedWords = originalOutput.map((word, i) => {
     if (indexes.includes(i)) {
         const content = getSuggestionText(word);
-        return '<mark data-toggle="popover" data-html="true" data-content="' + content + '" data-trigger="hover">' + word + '</mark>';
+        return '<mark data-toggle="popover" data-html="true"  data-trigger="hover" data-content="' + content + '">' + word + '</mark>';
     }
 
     return word;
   });
 
   return processedWords.join(" ");
+}
+
+function copyToClipboard() {
+    // Source: https://stackoverflow.com/questions/5002111/how-to-strip-html-tags-from-string-in-javascript
+    const selectedText = textOutput.replace(/<\/?[^>]+(>|$)/g, "");
+    console.log(selectedText);
+    const el = document.createElement('textarea');
+    el.value = selectedText;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+}
+
+function autoReplace() {
+    let offWords = detectOffensiveWords(inputWords);
+
+    let newWords = inputWords.map(word => {
+        if (offWords.includes(word)) {
+            return getReplacements(word)[0];
+        }
+
+        return word;
+    });
+
+    textOutput = "<p>" + newWords.join(" ") + "</p>"; 
+
+    $("#text-output").empty();
+    $("#text-output").append(textOutput);
+
+    $('.replace-btn').tooltip('hide');
+    $('.replace-btn').prop('disabled', true);
+    $('.copy-btn').prop('disabled', false);
 }
 
 // Tests for parse
@@ -224,7 +269,7 @@ let parsedOutput3 = parse(example3);
 // parsedOutput.forEach(word => console.log(word));
 
 let offWords = detectOffensiveWords(parsedOutput);
-const textOutput = "<p>" + highlightWords(offWords, parsedOutput) + "</p>";
+//const textOutput = "<p>" + highlightWords(offWords, parsedOutput) + "</p>";
 //$("#text-output").append(textOutput);
 console.log(highlightWords(offWords, parsedOutput));
 
