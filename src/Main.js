@@ -90,7 +90,7 @@ function getSuggestionText(word) {
 }
 
 // Tests for parse
-let example = "I will print all these ,words and n0mber-5, shesaid!";
+let example = "I will print all these bossy ,words and n0mber-5, shesaid!";
 let example2 = ".wrods!";
 let example3 = " y.   use";
 
