@@ -25,10 +25,10 @@ const offensiveWords = {
   lame: [5, 10],
   ballsy: [1, 11],
   gay: [6, 12],
-  bitch: [7, 12],
-  girl: [7, 12],
-  slut: [8, 13],
-  whore: [8, 13]
+  bitch: [7, 13],
+  girl: [7, 13],
+  slut: [8, 14],
+  whore: [8, 14]
 };
 
 const explanations = [
