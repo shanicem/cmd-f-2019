@@ -41,8 +41,16 @@ const replacements = [
   ["grandparents", "people on fixed incomes"]
 ];
 
+function clearSearchResults() {
+    $("#text-output").empty();
+    $("#sidebar-results").empty();
+    $("#userInput").val('');
+    $("#userInput").placeholder = "We will make your text more inclusive!";
+}
+
 function processInput() {
     let input = document.getElementById("userInput").value;
+    console.log("Input: " + input + "\n");
     let allWords = parse(input);
     let offWords = detectOffensiveWords(allWords);
     let textOutput;
@@ -52,7 +60,7 @@ function processInput() {
     } else {
         textOutput = "<p>Great job! Your text seems to be pretty friendly :)</p>";
     }
-    $(".text-output").append(textOutput);
+    $("#text-output").append(textOutput);
 }
 
 function toggleResults() {
@@ -61,11 +69,12 @@ function toggleResults() {
 }
 
 function goToResults() {
-    window.scrollTo(0, document.body.scrollHeight)
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 function goToSearch() {
-    window.scrollTo(0, 0)
+    clearSearchResults();
+    window.scrollTo(0, 0);
 }
 
 // Returns an array of words without punctuation at the start and end of strings
@@ -209,7 +218,7 @@ let parsedOutput3 = parse(example3);
 
 let offWords = detectOffensiveWords(parsedOutput);
 const textOutput = "<p>" + highlightWords(offWords, parsedOutput) + "</p>";
-//$(".text-output").append(textOutput);
+//$("#text-output").append(textOutput);
 console.log(highlightWords(offWords, parsedOutput));
 
 // Tests for offensive word detection
@@ -219,5 +228,5 @@ console.log(getExplanation("bossy"));
 console.log(getSuggestionText("bossy"));
 
 // Tests for creating explanation and suggestions text blocks
-let htmlExplanationSuggBlocks = createExplanationAndSuggestionBlocks(testOffensiveWords);
-console.log(htmlExplanationSuggBlocks);
+// let htmlExplanationSuggBlocks = createExplanationAndSuggestionBlocks(testOffensiveWords);
+// console.log(htmlExplanationSuggBlocks);
