@@ -50,3 +50,7 @@ button {
 	transition: bottom 0.01s linear;
 	box-shadow: 3px 4px 0px #87a86f;
 }
+
+#text-output {
+	line-height: 35px;
+}
