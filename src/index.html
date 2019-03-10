@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-		/>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-		<title>friendliHER*</title>
+    <title>friendliHER*</title>
 
-		<!-- CSS -->
-		<link rel="stylesheet" href="style.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="../assets/curly.png" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico"
-			rel="stylesheet"
-		/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/curly.png" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico"
+      rel="stylesheet"
+    />
 
 		<meta charset="utf-8" />
 	</head>
@@ -61,7 +61,7 @@
 									onclick="processInput(); toggleResults(); goToResults()"
 									style="margin-top: 20px"
 									data-toggle="collapse"
-									data-target="#sidebar-collapse"
+									data-target="#sidebar-collapse, #text-field-collapse"
 								>
 									Submit
 								</button>
@@ -73,24 +73,15 @@
 					style="background-image: url('../assets/Plants.png'), url('../assets/standing-14.png'); background-repeat: no-repeat; background-position: center center;"
 				>
 					<div style="width: 500px; height: 700px; margin: auto">
-						<div class="sidenav collapse" id="sidebar-collapse">
-							<p class="navbar-text p-4">Probably don't need Title</p>
-							<br />
-							<p class="navbar-text p-4">
-								lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								suspendisse tempor pharetra tortor ac dictum. nunc bibendum
-								sapien posuere ligula imperdiet, a posuere ex mollis. quisque
-								molestie viverra sem eu aliquet. vivamus ligula purus, euismod
-								eu euismod sed, tincidunt nec tortor.
-							</p>
-							<div class="sidebar-results"></div>
+						<div class="collapse" id="text-field-collapse">
+							<div class="text-output"></div>
 							<button
 								type="button"
 								class="btn btn-info"
 								onclick="processInput(); goToSearch(); toggleResults()"
 								style="margin-top: 20px"
 								data-toggle="collapse"
-								data-target="#sidebar-collapse"
+								data-target="#sidebar-collapse, #text-field-collapse"
 							>
 								Go back to Search
 							</button>
