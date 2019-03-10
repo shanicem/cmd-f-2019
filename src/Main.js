@@ -58,7 +58,7 @@ function clearSearchResults() {
 
 function processInput() {
     clearSearchResults();
-    
+
     let inputText = document.getElementById("userInput").value;
     console.log("Input: " + inputText + "\n");
     inputWords = parse(inputText);
@@ -158,6 +158,7 @@ function createExplanationAndSuggestionBlocks(input) {
         let explanationText = document.createTextNode(explanationIntro + explanation);
         let explanationNode = document.createElement("p");
         explanationNode.appendChild(explanationText);
+        explanationNode.classList.add("card-text");
         card.appendChild(explanationNode);
 
         // create suggestions paragraph
@@ -165,6 +166,7 @@ function createExplanationAndSuggestionBlocks(input) {
         let suggestionText = document.createTextNode(suggestion);
         let suggestionNode = document.createElement("p");
         suggestionNode.appendChild(suggestionText);
+        suggestionNode.classList.add("card-text");
         card.appendChild(suggestionNode);
 
         root.appendChild(card);
@@ -213,7 +215,7 @@ function getReplacements(word) {
 function getSuggestionText(word) {
     const wordReplacements = getReplacements(word);
   if (wordReplacements) {
-    return "Try using these more inclusive terms instead: <br>" + wordReplacements.join(", ");
+    return "Try using these more inclusive terms instead: " + wordReplacements.join(", ");
   }
 
   return "";
