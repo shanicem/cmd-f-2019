@@ -10,6 +10,11 @@
 	justify-content: space-around;
 }
 
+#userInput {
+	opacity: 0.9;
+	color: black;
+}
+
 .sidebar {
 	background-color: #f2f2f2;
 	height: 100%; /* Full-height: remove this if you want "auto" height */
