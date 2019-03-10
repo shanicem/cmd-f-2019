@@ -72,6 +72,8 @@ function processInput() {
         let noOffWordsTextNode = document.createTextNode(noOffWordsText);
         root.appendChild(noOffWordsTextNode);
         textOutput = "<p>Great job! Your text seems to be pretty friendly :)</p>";
+        $('.replace-btn').prop('disabled', true);
+
     }
     $("#text-output").append(textOutput);
 
