@@ -58,7 +58,7 @@
 								<button
 									type="button"
 									class="btn btn-info"
-									onclick="saveInput(); toggleResults(); goToResults()"
+									onclick="processInput(); toggleResults(); goToResults()"
 									style="margin-top: 20px"
 									data-toggle="collapse"
 									data-target="#sidebar-collapse"
@@ -111,24 +111,5 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<script src="Main.js"></script>
-		<script>
-			function saveInput() {
-				// Input gathered from form
-				var input = document.getElementById("userInput").value
-			}
-
-			function toggleResults() {
-				$(".sidebar").toggleClass("w-25")
-				$(".main-page").toggleClass("w-75")
-			}
-
-			function goToResults() {
-				window.scrollTo(0, document.body.scrollHeight)
-			}
-
-			function goToSearch() {
-				window.scrollTo(0, 0)
-			}
-		</script>
 	</body>
 </html>
