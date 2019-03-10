@@ -1,4 +1,10 @@
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
 .input {
 	display: flex;
-	justify-content: center;
+	height: 600px;
+	justify-content: space-around;
 }
