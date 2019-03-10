@@ -45,8 +45,13 @@ function processInput() {
     let input = document.getElementById("userInput").value;
     let allWords = parse(input);
     let offWords = detectOffensiveWords(allWords);
-    createExplanationAndSuggestionBlocks(offWords);
-    const textOutput = "<p>" + highlightWords(offWords, allWords) + "</p>";
+    let textOutput;
+    if (offWords.length > 0) {
+        createExplanationAndSuggestionBlocks(offWords);
+        textOutput = "<p>" + highlightWords(offWords, allWords) + "</p>";
+    } else {
+        textOutput = "<p>Great job! Your text seems to be pretty friendly :)</p>";
+    }
     $(".text-output").append(textOutput);
 }
 
