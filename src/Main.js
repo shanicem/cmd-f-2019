@@ -40,7 +40,7 @@ const explanations = [
 const replacements = [
   ["assertive", "strict"],
   ["folks", "everyone", "team", "y'all"],
-  ["workforce", "workers", "team"],
+  ["workers", "workforce", "team"],
   ["their", "theirs", "one's"],
   ["server", "waitstaff"],
   ["chairperson", "chair", "director", "leader"],
@@ -160,6 +160,13 @@ function joinWordsAndPunctuation(processedWords) {
 
 function createExplanationAndSuggestionBlocks(input) {
     let root = document.getElementById("sidebar-results");
+
+    let intro = document.createElement("p");
+    intro.classList.add("navbar-text");
+    intro.classList.add("font-italic");
+    let introText = document.createTextNode("Make your words kinder with these suggestions: ");
+    intro.appendChild(introText);
+    root.appendChild(intro);
     
     input.forEach(word => {
         // create card to store offensive word info
