@@ -54,3 +54,11 @@ button {
 #text-output {
 	line-height: 35px;
 }
+
+.card-text p {
+	margin-bottom: 0.3rem;
+}
+
+.card {
+	margin: 5px 0;
+}

@@ -176,18 +176,37 @@ function createExplanationAndSuggestionBlocks(input) {
 
         // create explanation paragraph
         let explanation = getExplanation(word);
-        let explanationIntro = "Why might we want to use another word? ";
-        let explanationText = document.createTextNode(explanationIntro + explanation);
+        let explanationIntro = document.createTextNode("Why might we want to use another word?");
+        let explanationIntroNode = document.createElement("p");
+        explanationIntroNode.appendChild(explanationIntro);
+        explanationIntroNode.classList.add('small');
+        explanationIntroNode.classList.add('font-italic');
+        let explanationText = document.createTextNode(explanation);
+        let explanationTextNode = document.createElement("p");
+        explanationTextNode.appendChild(explanationText);
         let explanationNode = document.createElement("p");
-        explanationNode.appendChild(explanationText);
+        explanationNode.appendChild(explanationIntroNode);
+        explanationNode.appendChild(explanationTextNode);
         explanationNode.classList.add("card-text");
         card.appendChild(explanationNode);
 
         // create suggestions paragraph
-        let suggestion = getSuggestionText(word);
-        let suggestionText = document.createTextNode(suggestion);
         let suggestionNode = document.createElement("p");
-        suggestionNode.appendChild(suggestionText);
+        let suggestionIntroText = document.createTextNode("Here are more inclusive words you could use: ");
+        let suggestionIntroNode = document.createElement("p");
+        suggestionIntroNode.appendChild(suggestionIntroText);
+        suggestionIntroNode.classList.add('small');
+        suggestionIntroNode.classList.add('font-italic');
+        suggestionNode.appendChild(suggestionIntroNode);
+        let suggestions = getReplacements(word);
+        suggestions.forEach(word => {
+            let suggestionText = document.createTextNode(word);
+            let suggestionTextNode = document.createElement("p");
+            suggestionTextNode.classList.add('font-weight-bold');
+            suggestionTextNode.appendChild(suggestionText);
+            suggestionNode.appendChild(suggestionTextNode);
+        });
+
         suggestionNode.classList.add("card-text");
         card.appendChild(suggestionNode);
 
