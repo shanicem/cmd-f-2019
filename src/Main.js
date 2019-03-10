@@ -24,7 +24,11 @@ const offensiveWords = {
   retarded: [5, 10],
   lame: [5, 10],
   ballsy: [1, 11],
-  gay: [6, 12]
+  gay: [6, 12],
+  bitch: [7, 12],
+  girl: [7, 12],
+  slut: [8, 13],
+  whore: [8, 13]
 };
 
 const explanations = [
@@ -34,7 +38,9 @@ const explanations = [
   "This term uses language that dismisses different types of family structures.",
   "This term could be more specific to avoid assuming stereotypes of an age group. Try focusing on a quality of the group that you're trying to address.",
   "This term uses language that may target mental, emotional and physical disabilities as objects for ridicule. Try using words more specific to the situation you're addressing.",
-  "This term is often used to stigmatize gay and queer people and describe them in an undesirable way. Make sure you're not using this term in place of a negative adjective."
+  "This term is often used to stigmatize gay and queer people and describe them in an undesirable way. Make sure you're not using this term in place of a negative adjective.",
+  "This term is often used to belittle a woman's authority and may be seen as offensive in a professional environment.",
+  "This term perpetuates negativity towards sex and is often used to shame minority groups engaging in a normal experience."
 ];
 
 const replacements = [
@@ -50,7 +56,9 @@ const replacements = [
   ["spouses", "partners"],
   ["incapable", "developmentally challenged"],
   ["bold", "gutsy", "courageous"],
-  ["bad"]
+  ["bad"],
+  ["woman", "co-worker", "friend"],
+  ["person", "escort", "sex worker"]
 ];
 
 // Global variables
