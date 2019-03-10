@@ -1,3 +1,6 @@
+// NOTE: Moved these to Main.js
+// Please update constants there :)
+
 let offensiveWords = {
   bossy: [0, 0],
   guys: [1, 1],
@@ -17,7 +20,7 @@ let replacements = [
   ["their", "theirs", "one's"]
 ];
 
-module.exports = {
+exports = {
   offensiveWords,
   explanations,
   replacements
