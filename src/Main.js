@@ -3,6 +3,7 @@
 //   return constants;
 // });
 
+// Constants
 let offensiveWords = {
   bossy: [0, 0],
   guys: [1, 1],
@@ -43,6 +44,34 @@ function removePunctuation(input) {
 
 function removeEmptyStrings(input) {
   return input.filter(word => word !== "");
+}
+
+function createExplanationAndSuggestionBlocks(input) {
+    let root = document.getElementById("sidebar-results");
+    // loop over words
+    input.forEach(word => {
+        // create, append header
+        let headerText = document.createTextNode(word);
+        let headerNode = document.createElement("h3");
+        headerNode.appendChild(headerText);
+        root.appendChild(headerNode);
+
+        // create explanation paragraph
+        let explanation = getExplanation(word);
+        let explanationIntro = "Why consider using another word? ";
+        let explanationText = document.createTextNode(explanationIntro + explanation);
+        let explanationNode = document.createElement("p");
+        explanationNode.appendChild(explanationText);
+        root.appendChild(explanationNode);
+
+        // create suggestions paragraph
+        let suggestion = getSuggestionText(word);
+        let suggestionIntro = "Replacement suggestions: ";
+        let suggestionText = document.createTextNode(suggestionIntro + suggestion);
+        let suggestionNode = document.createElement("p");
+        suggestionNode.appendChild(suggestionText);
+        root.appendChild(suggestionNode);
+    });
 }
 
 /*
@@ -103,6 +132,11 @@ console.log(parsedOutput3);
 parsedOutput.forEach(word => console.log(word));
 
 // Tests for offensive word detection
-console.log(detectOffensiveWords(parsedOutput));
+let testOffensiveWords = detectOffensiveWords(parsedOutput);
+console.log(testOffensiveWords);
 console.log(getExplanation("bossy"));
 console.log(getSuggestionText("bossy"));
+
+// Tests for creating explanation and suggestions text blocks
+let htmlExplanationSuggBlocks = createExplanationAndSuggestionBlocks(testOffensiveWords);
+console.log(htmlExplanationSuggBlocks);
