@@ -104,13 +104,14 @@ function splitWordsAndPunctuation(input) {
 function joinWordsAndPunctuation(processedWords) {
     let finalStr = "";
     for (let i=0; i<processedWords.length; i++) {
+        // only checks if there's a punctuation mark after a word
         let checkPuncIndex = i + 1;
         if ((checkPuncIndex < processedWords.length) &&
         (processedWords[checkPuncIndex] === "," ||
         processedWords[checkPuncIndex] === "." ||
         processedWords[checkPuncIndex] === "?" ||
         processedWords[checkPuncIndex] === "!")) {
-            finalStr = finalStr.concat(processedWords[i], processedWords[checkPuncIndex]);
+            finalStr = finalStr.concat(" " + processedWords[i], processedWords[checkPuncIndex]);
             ++i;
         } else {
             finalStr = finalStr.concat(" ", processedWords[i]);
