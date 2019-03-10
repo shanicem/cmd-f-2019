@@ -127,19 +127,17 @@ function joinWordsAndPunctuation(processedWords) {
             if (indexTwoAfter < processedWords.length) {
                 finalStr = finalStr.concat(" " + processedWords[i], processedWords[puncIndex], processedWords[indexTwoAfter]);
                 i = indexTwoAfter;
-            } else {
-                finalStr = finalStr.concat(" " + processedWords[i], processedWords[puncIndex]);
             }
-        }
-        // checks for punctuation mark after a word
-        if ((puncIndex < processedWords.length) &&
-        (processedWords[puncIndex] === "," ||
-        processedWords[puncIndex] === "." ||
-        processedWords[puncIndex] === "?" ||
-        processedWords[puncIndex] === "!" ||
-        processedWords[puncIndex] === '"')) {
-            finalStr = finalStr.concat(" " + processedWords[i], processedWords[puncIndex]);
-            ++i;
+        // other punctuation special cases
+        } else if (processedWords[puncIndex] === "," ||
+            processedWords[puncIndex] === "." ||
+            processedWords[puncIndex] === "?" ||
+            processedWords[puncIndex] === "!" ||
+            processedWords[puncIndex] === '"') {
+            if (puncIndex < processedWords.length) {
+                finalStr = finalStr.concat(" " + processedWords[i], processedWords[puncIndex]);
+                ++i;
+            }
         } else {
             finalStr = finalStr.concat(" ", processedWords[i]);
         }
