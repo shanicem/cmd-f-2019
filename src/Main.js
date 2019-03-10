@@ -58,6 +58,10 @@ function processInput() {
         createExplanationAndSuggestionBlocks(offWords);
         textOutput = "<p>" + highlightWords(offWords, allWords) + "</p>";
     } else {
+        let root = document.getElementById("sidebar-results");
+        let noOffWordsText = "Awesome, your text is already inclusive!";
+        let noOffWordsTextNode = document.createTextNode(noOffWordsText);
+        root.appendChild(noOffWordsTextNode);
         textOutput = "<p>Great job! Your text seems to be pretty friendly :)</p>";
     }
     $("#text-output").append(textOutput);
@@ -98,7 +102,7 @@ function removeEmptyStrings(input) {
 
 function createExplanationAndSuggestionBlocks(input) {
     let root = document.getElementById("sidebar-results");
-
+    
     input.forEach(word => {
         // create card to store offensive word info
         let card = document.createElement("div");
