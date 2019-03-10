@@ -71,7 +71,7 @@ function processInput() {
         let noOffWordsText = "Awesome, your text is already inclusive!";
         let noOffWordsTextNode = document.createTextNode(noOffWordsText);
         root.appendChild(noOffWordsTextNode);
-        textOutput = "<p>Great job! Your text seems to be pretty friendly :)</p>";
+        textOutput = "<p>Great job! Your text already seems pretty inclusive! :)</p>";
     }
     $("#text-output").append(textOutput);
 
@@ -120,14 +120,25 @@ function splitWordsAndPunctuation(input) {
 function joinWordsAndPunctuation(processedWords) {
     let finalStr = "";
     for (let i=0; i<processedWords.length; i++) {
-        // only checks if there's a punctuation mark after a word
-        let checkPuncIndex = i + 1;
-        if ((checkPuncIndex < processedWords.length) &&
-        (processedWords[checkPuncIndex] === "," ||
-        processedWords[checkPuncIndex] === "." ||
-        processedWords[checkPuncIndex] === "?" ||
-        processedWords[checkPuncIndex] === "!")) {
-            finalStr = finalStr.concat(" " + processedWords[i], processedWords[checkPuncIndex]);
+        let puncIndex = i + 1;
+        // apostrophe special case
+        if ((processedWords[puncIndex] === "'") && (puncIndex < processedWords.length)) {
+            let indexTwoAfter = i + 2;
+            if (indexTwoAfter < processedWords.length) {
+                finalStr = finalStr.concat(" " + processedWords[i], processedWords[puncIndex], processedWords[indexTwoAfter]);
+                i = indexTwoAfter;
+            } else {
+                finalStr = finalStr.concat(" " + processedWords[i], processedWords[puncIndex]);
+            }
+        }
+        // checks for punctuation mark after a word
+        if ((puncIndex < processedWords.length) &&
+        (processedWords[puncIndex] === "," ||
+        processedWords[puncIndex] === "." ||
+        processedWords[puncIndex] === "?" ||
+        processedWords[puncIndex] === "!" ||
+        processedWords[puncIndex] === '"')) {
+            finalStr = finalStr.concat(" " + processedWords[i], processedWords[puncIndex]);
             ++i;
         } else {
             finalStr = finalStr.concat(" ", processedWords[i]);
