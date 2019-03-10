@@ -201,7 +201,7 @@ function highlightWords(offensiveWords, originalOutput) {
   const processedWords = originalOutput.map((word, i) => {
     if (indexes.includes(i)) {
         const content = getSuggestionText(word);
-        return '<mark data-toggle="popover" data-html="true" data-content="' + content + '" data-trigger="click">' + word + '</mark>';
+        return '<mark data-toggle="popover" data-html="true" data-content="' + content + '" data-trigger="hover">' + word + '</mark>';
     }
 
     return word;
