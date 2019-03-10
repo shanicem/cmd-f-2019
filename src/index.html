@@ -1,81 +1,90 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, shrink-to-fit=no"
-		/>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-		<title>friendliHER*</title>
+    <title>friendliHER*</title>
 
-		<!-- CSS -->
-		<link rel="stylesheet" href="style.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="../assets/curly.png" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico"
-			rel="stylesheet"
-		/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/curly.png" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Markazi+Text|Pacifico"
+      rel="stylesheet"
+    />
 
-		<meta charset="utf-8" />
-	</head>
-	<body
-		class="flex-container"
-		style="background-image: url('../assets/Plants.png'), url('../assets/sitting-1.png'); background-repeat: no-repeat; 
-		background-position: center center;"
-	>
-		<div>
-			<h1
-				style="padding-top: 50px; font-family: 'Markazi Text', serif; font-size: 100px; display: flex; justify-content: center;"
-			>
-				friendliHer*
-			</h1>
-		</div>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div class="main-page">
+      <div
+        class="flex-container"
+        style="background-image: url('../assets/Plants.png'), url('../assets/sitting-1.png'); background-repeat: no-repeat; 
+      background-position: center center;"
+      >
+        <div>
+          <h1
+            style="padding-top: 50px; font-family: 'Markazi Text', serif; font-size: 100px; display: flex; justify-content: center;"
+          >
+            friendliHer*
+          </h1>
+        </div>
 
-		<div class="input">
-			<form>
-				<div class="form-group">
-					<textarea
-						id="userInput"
-						class="form-control"
-						id="formControlTextarea"
-						rows="3"
-						placeholder="We will make your text more inclusive!"
-					></textarea>
+        <div class="input">
+          <form>
+            <div class="form-group">
+              <textarea
+                id="userInput"
+                class="form-control"
+                id="formControlTextarea"
+                rows="3"
+                placeholder="We will make your text more inclusive!"
+              ></textarea>
 
-					<button
-						type="button"
-						class="btn btn-primary"
-						onclick="saveInput();"
-						style="margin-top: 20px"
-						data-toggle="collapse"
-						data-target="#demo"
-						href="#collapseResults"
-					>
-						Submit
-					</button>
-				</div>
-			</form>
-		</div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="saveInput(); showResults();"
+                style="margin-top: 20px"
+                data-toggle="collapse"
+                data-target="#demo, #sidebar-collapse"
+                href="#collapseResults"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
-		<div class="sidenav collapse" id="sidebar-collapse"></div>
+    <div class="sidenav collapse" id="sidebar-collapse"></div>
 
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
-		<script>
-			function saveInput() {
-				// Input gathered from form
-				var input = document.getElementById("userInput").value
-				alert(input)
-			}
-		</script>
-	</body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+    <script>
+      function saveInput() {
+        // Input gathered from form
+        var input = document.getElementById("userInput").value;
+        alert(input);
+      }
+
+      function showResults() {
+        $(".sidenav").addClass("w-25");
+        $(".main-page").addClass("w-75");
+      }
+    </script>
+  </body>
 </html>
