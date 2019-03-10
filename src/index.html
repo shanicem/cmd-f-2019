@@ -27,11 +27,7 @@
 	</head>
 	<body>
 		<div class="main-page">
-			<div
-				class="flex-container"
-				style="background-image: url('../assets/Plants.png'), url('../assets/sitting-1.png'); background-repeat: no-repeat; 
-      background-position: center center;"
-			>
+			<div class="flex-container">
 				<div>
 					<h1
 						style="padding-top: 50px; font-family: 'Markazi Text', serif; font-size: 100px; display: flex; justify-content: center;"
@@ -39,42 +35,54 @@
 						friendliHer*
 					</h1>
 				</div>
-				<section style="width: 60%; margin: auto">
-					<div class="input">
+				<section
+					style="background-image: url('../assets/Plants.png'), url('../assets/sitting-1.png'); background-repeat: no-repeat; background-position: center center;"
+				>
+					<div class="input" style="width: 500px; height: 700px; margin: auto;">
 						<form style="width: 100%">
 							<textarea
 								id="userInput"
 								class="form-control"
 								rows="3"
-								style="height: 500px"
+								style="height: 50px"
 								placeholder="We will make your text more inclusive!"
 							></textarea>
-
-							<button
-								type="button"
-								class="btn btn-primary"
-								onclick="saveInput(); toggleResults();"
-								style="margin-top: 20px"
-								data-toggle="collapse"
-								data-target="#demo, #sidebar-collapse"
-								href="#collapseResults"
-							>
-								Submit
-							</button>
+							<div style="display: flex; justify-content: flex-end;">
+								<button
+									type="button"
+									class="btn btn-primary"
+									onclick="saveInput(); toggleResults(); goToResults()"
+									style="margin-top: 20px"
+									data-toggle="collapse"
+									data-target="#sidebar-collapse"
+								>
+									Submit
+								</button>
+							</div>
 						</form>
 					</div>
 				</section>
-				<section style="width: 60%; margin: auto">
-					Results Area Section 2
+				<section
+					style="background-image: url('../assets/Plants.png'), url('../assets/standing-14.png'); background-repeat: no-repeat; background-position: center center;"
+				>
+					<div style="width: 500px; height: 700px; margin: auto">
+						<div class="sidenav collapse" id="sidebar-collapse">
+							<p class="navbar-text p-4">Title</p>
+							<br />
+							<p class="navbar-text p-4">More words Bottom</p>
+							<div class="sidebar-results"></div>
+							<button
+								type="button"
+								class="btn btn-secondary"
+								onclick="toggleResults(); goToSearch()"
+								style="margin-top: 20px"
+							>
+								Go back to Search
+							</button>
+						</div>
+					</div>
 				</section>
 			</div>
-		</div>
-
-		<div class="sidenav collapse" id="sidebar-collapse">
-			<p class="navbar-text p-4">Title</p>
-			<br />
-			<p class="navbar-text p-4">More words here</p>
-			<div class="sidebar-results"></div>
 		</div>
 
 		<div class="sidebar collapse" id="sidebar-collapse">
@@ -91,12 +99,19 @@
 			function saveInput() {
 				// Input gathered from form
 				var input = document.getElementById("userInput").value
-				alert(input)
 			}
 
 			function toggleResults() {
 				$(".sidebar").toggleClass("w-25")
 				$(".main-page").toggleClass("w-75")
+			}
+
+			function goToResults() {
+				window.scrollTo(0, document.body.scrollHeight)
+			}
+
+			function goToSearch() {
+				window.scrollTo(0, 0)
 			}
 		</script>
 	</body>

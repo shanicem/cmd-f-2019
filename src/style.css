@@ -21,3 +21,8 @@
 	overflow-x: hidden; /* Disable horizontal scroll */
 	padding-top: 20px;
 }
+
+button {
+	display: flex;
+	justify-content: end;
+}
