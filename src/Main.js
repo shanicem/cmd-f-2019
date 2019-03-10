@@ -93,21 +93,30 @@ function goToSearch() {
 
 // Returns an array of words without punctuation at the start and end of strings
 function parse(input) {
-  let wordsWithoutPunctuation = removePunctuation(input);
-  let wordsSplitBySpaces = wordsWithoutPunctuation.split(" ");
-  let finalWords = removeEmptyStrings(wordsSplitBySpaces);
-  return finalWords;
+  let wordsAndPunctuation = splitWordsAndPunctuation(input);
+  return wordsAndPunctuation;
 }
 
-function removePunctuation(input) {
-  return input.replace(
-    /\b[-.,()&$#!\[\]{}"']+\B|\B[-.,()&$#!\[\]{}"']+\b/g,
-    ""
-  );
+function splitWordsAndPunctuation(input) {
+    return input.replace(/[^\w\s]|_/g, function ($1) { return ' ' + $1 + ' ';}).replace(/[ ]+/g, ' ').split(' ');
 }
 
-function removeEmptyStrings(input) {
-  return input.filter(word => word !== "");
+function joinWordsAndPunctuation(processedWords) {
+    let finalStr = "";
+    for (let i=0; i<processedWords.length; i++) {
+        let checkPuncIndex = i + 1;
+        if ((checkPuncIndex < processedWords.length) &&
+        (processedWords[checkPuncIndex] === "," ||
+        processedWords[checkPuncIndex] === "." ||
+        processedWords[checkPuncIndex] === "?" ||
+        processedWords[checkPuncIndex] === "!")) {
+            finalStr = finalStr.concat(processedWords[i], processedWords[checkPuncIndex]);
+            ++i;
+        } else {
+            finalStr = finalStr.concat(" ", processedWords[i]);
+        }
+    }
+    return finalStr;
 }
 
 function createExplanationAndSuggestionBlocks(input) {
@@ -210,7 +219,7 @@ function highlightWords(offensiveWords, originalOutput) {
     }
   });
 
-  const processedWords = originalOutput.map((word, i) => {
+  const processedInput = originalOutput.map((word, i) => {
     if (indexes.includes(i)) {
         const content = getSuggestionText(word);
         return '<mark data-toggle="popover" data-html="true"  data-trigger="hover" data-content="' + content + '">' + word + '</mark>';
@@ -219,7 +228,7 @@ function highlightWords(offensiveWords, originalOutput) {
     return word;
   });
 
-  return processedWords.join(" ");
+  return joinWordsAndPunctuation(processedInput);
 }
 
 function copyToClipboard() {
