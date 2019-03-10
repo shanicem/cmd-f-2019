@@ -25,6 +25,27 @@ let replacements = [
 
 /** Main functionality for inclusive-language text checker */
 
+function processInput() {
+    // Input gathered from form
+    let input = document.getElementById("userInput").value;
+    let allWords = parse(input);
+    let offensiveWords = detectOffensiveWords(allWords);
+    createExplanationAndSuggestionBlocks(offensiveWords);
+}
+
+function toggleResults() {
+    $(".sidebar").toggleClass("w-25");
+    $(".main-page").toggleClass("w-75");
+}
+
+function goToResults() {
+    window.scrollTo(0, document.body.scrollHeight)
+}
+
+function goToSearch() {
+    window.scrollTo(0, 0)
+}
+
 // Returns an array of words without punctuation at the start and end of strings
 function parse(input) {
   let wordsWithoutPunctuation = removePunctuation(input);
@@ -48,29 +69,35 @@ function removeEmptyStrings(input) {
 
 function createExplanationAndSuggestionBlocks(input) {
     let root = document.getElementById("sidebar-results");
-    // loop over words
+
     input.forEach(word => {
-        // create, append header
+        let card = document.createElement("div");
+        card.classList.add("card");
+        card.classList.add("card-body");
+        card.classList.add("bg-light");
+
+        // create header
         let headerText = document.createTextNode(word);
-        let headerNode = document.createElement("h3");
+        let headerNode = document.createElement("h4");
         headerNode.appendChild(headerText);
-        root.appendChild(headerNode);
+        card.appendChild(headerNode);
 
         // create explanation paragraph
         let explanation = getExplanation(word);
-        let explanationIntro = "Why consider using another word? ";
+        let explanationIntro = "Why might we want to use another word? ";
         let explanationText = document.createTextNode(explanationIntro + explanation);
         let explanationNode = document.createElement("p");
         explanationNode.appendChild(explanationText);
-        root.appendChild(explanationNode);
+        card.appendChild(explanationNode);
 
         // create suggestions paragraph
         let suggestion = getSuggestionText(word);
-        let suggestionIntro = "Replacement suggestions: ";
-        let suggestionText = document.createTextNode(suggestionIntro + suggestion);
+        let suggestionText = document.createTextNode(suggestion);
         let suggestionNode = document.createElement("p");
         suggestionNode.appendChild(suggestionText);
-        root.appendChild(suggestionNode);
+        card.appendChild(suggestionNode);
+
+        root.appendChild(card);
     });
 }
 
