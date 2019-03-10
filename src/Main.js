@@ -15,10 +15,16 @@ const offensiveWords = {
   waitress: [2, 4],
   chairman: [1, 5],
   wife: [3, 6],
+  wives: [3, 9],
   husband: [3, 6],
+  husbands: [3, 9],
   mom: [3, 7],
   dad: [3, 7],
-  elderly: [4, 8]
+  elderly: [4, 8],
+  retarded: [5, 10],
+  lame: [5, 10],
+  ballsy: [1, 11],
+  gay: [6, 12]
 };
 
 const explanations = [
@@ -26,7 +32,9 @@ const explanations = [
   "This term uses gendered language that may insinuate that men are a preferred gender.",
   "This term uses unnecessary gendered language to describe an occupation. It may be helpful to describe the work, not the gender.",
   "This term uses language that dismisses different types of family structures.",
-  "This term could be more specific to avoid assuming stereotypes of an age group. Try focusing on a quality of the group that you're trying to address."
+  "This term could be more specific to avoid assuming stereotypes of an age group. Try focusing on a quality of the group that you're trying to address.",
+  "This term uses language that may target mental, emotional and physical disabilities as objects for ridicule. Try using words more specific to the situation you're addressing.",
+  "This term is often used to stigmatize gay and queer people and describe them in an undesirable way. Make sure you're not using this term in place of a negative adjective."
 ];
 
 const replacements = [
@@ -38,7 +46,11 @@ const replacements = [
   ["chairperson", "chair", "director", "leader"],
   ["spouse", "partner"],
   ["parent", "guardian", "caregiver"],
-  ["grandparents", "people on fixed incomes"]
+  ["grandparents", "people on fixed incomes"],
+  ["spouses", "partners"],
+  ["incapable", "developmentally challenged"],
+  ["bold", "gutsy", "courageous"],
+  ["bad"]
 ];
 
 // Global variables
