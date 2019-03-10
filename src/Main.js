@@ -167,7 +167,7 @@ function detectOffensiveWords(allWords) {
   const detectedWords = [];
 
   allWords.forEach(word => {
-    if (offensiveWords.hasOwnProperty(word)) {
+    if (offensiveWords.hasOwnProperty(word) && !detectedWords.includes(word)) {
       detectedWords.push(word);
     }
   });
