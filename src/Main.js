@@ -52,13 +52,13 @@ window.onbeforeunload = function () {
 function clearSearchResults() {
     $("#text-output").empty();
     $("#sidebar-results").empty();
-    $("#userInput").val('');
-    $("#userInput").placeholder = "We will make your text more inclusive!";
     $('.replace-btn').prop('disabled', false);
     $('.copy-btn').prop('disabled', true);
 }
 
 function processInput() {
+    clearSearchResults();
+    
     let inputText = document.getElementById("userInput").value;
     console.log("Input: " + inputText + "\n");
     inputWords = parse(inputText);
@@ -82,9 +82,18 @@ function processInput() {
     });
 }
 
-function toggleResults() {
-    $(".sidebar").toggleClass("w-30");
-    $(".main-page").toggleClass("w-70");
+function hideResults() {
+    $('#sidebar-collapse').hide('slow');
+    $('#text-field-collapse').hide('slow');
+    $(".sidebar").removeClass("w-30");
+    $(".main-page").removeClass("w-70");
+}
+
+function showResults() {
+    $('#sidebar-collapse').show('slow');
+    $('#text-field-collapse').show('slow');
+    $(".sidebar").addClass("w-30");
+    $(".main-page").addClass("w-70");
 }
 
 function goToResults() {
@@ -92,6 +101,8 @@ function goToResults() {
 }
 
 function goToSearch() {
+    $("#userInput").val('');
+    $("#userInput").placeholder = "We will make your text more inclusive!";
     clearSearchResults();
     window.scrollTo(0, 0);
 }

@@ -58,10 +58,8 @@
 								<button
 									type="button"
 									class="btn btn-info"
-									onclick="processInput(); toggleResults(); goToResults()"
+									onclick="processInput(); showResults(); goToResults()"
 									style="margin-top: 20px"
-									data-toggle="collapse"
-									data-target="#sidebar-collapse, #text-field-collapse"
 								>
 									Submit
 								</button>
@@ -78,12 +76,10 @@
 							<button
 								type="button"
 								class="btn btn-info"
-								onclick="goToSearch(); toggleResults()"
+								onclick="goToSearch(); hideResults()"
 								style="margin-top: 20px"
-								data-toggle="collapse"
-								data-target="#sidebar-collapse, #text-field-collapse"
 							>
-								Go back to submission
+								Try another submission
               </button>
               <button
 								type="button"
