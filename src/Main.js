@@ -260,7 +260,7 @@ function autoReplace() {
         return word;
     });
 
-    textOutput = "<p>" + newWords.join(" ") + "</p>"; 
+    textOutput = "<p>" + joinWordsAndPunctuation(newWords) + "</p>"; 
 
     $("#text-output").empty();
     $("#text-output").append(textOutput);
