@@ -134,8 +134,8 @@ function joinWordsAndPunctuation(processedWords) {
     let finalStr = "";
     for (let i=0; i<processedWords.length; i++) {
         let puncIndex = i + 1;
-        // apostrophe special case
-        if ((processedWords[puncIndex] === "'") && (puncIndex < processedWords.length)) {
+        // apostrophe special cases
+        if ((processedWords[puncIndex] === "'" || processedWords[puncIndex] === "’") && (puncIndex < processedWords.length)) {
             let indexTwoAfter = i + 2;
             if (indexTwoAfter < processedWords.length) {
                 finalStr = finalStr.concat(" " + processedWords[i], processedWords[puncIndex], processedWords[indexTwoAfter]);
