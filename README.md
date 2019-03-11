@@ -1,8 +1,8 @@
 # kindHerWords
 
-3rd place overall at cmd-f 2019, Vancouver's first all-female hackathon!
+An inclusive language text checker, created by [Victoria Chang](https://github.com/vcchang), [Shanice Mcsavaney](https://github.com/shanicem), and [Nicole Li](https://github.com/nicolehli).
 
-An inclusive language text checker, created by [Victoria Chang](https://github.com/vcchang), [Shanice Mcsavaney](https://github.com/shanicem), and [Nicole Li](https://github.com/nicolehli): [kindHerWords](https://kindherwords.com/)
+Check it out: [kindHerWords](https://kindherwords.com/)
 
 ## Inspiration
 
