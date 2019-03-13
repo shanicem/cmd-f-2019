@@ -61,6 +61,14 @@ const replacements = [
   ["person", "escort", "sex worker"]
 ];
 
+// Sample
+const sample = [
+    "Hey guys, have you met the new teammate? She seems bossy.",
+    "Hi Team, we need more manpower on the project. Tell your wives you will be working late this weekend.",
+    "My company is hiring a new chairman.",
+    "Where is the waiter?"
+]
+
 // Global variables
 var inputWords, textOutput;
 
@@ -81,7 +89,7 @@ function processInput() {
     clearSearchResults();
 
     let inputText = document.getElementById("userInput").value;
-    console.log("Input: " + inputText + "\n");
+    console.log("InputLength: " + inputText.length + "\n");
     inputWords = parse(inputText);
     let offWords = detectOffensiveWords(inputWords);
     if (offWords.length > 0) {
@@ -102,6 +110,7 @@ function processInput() {
         $('[data-toggle="popover"]').popover();
         $('[data-toggle="tooltip"]').tooltip();
     });
+
 }
 
 function hideResults() {
@@ -129,10 +138,26 @@ function goToSearch() {
     window.scrollTo(0, 0);
 }
 
+function loadSample() { 
+    let inputText = document.getElementById("userInput").value;
+    let randomNum = Math.floor(Math.random() * sample.length)
+    $("#userInput").val(sample[randomNum]);
+    console.log(inputText)
+    console.log(randomNum)
+    console.log(sample[randomNum])
+    while(inputText === sample[randomNum]) {
+        randomNum = Math.floor(Math.random() * sample.length)
+        $("#userInput").val(sample[randomNum]);
+    }
+}
+
 // Returns an array of words without punctuation at the start and end of strings
 function parse(input) {
-  let wordsAndPunctuation = splitWordsAndPunctuation(input);
-  return wordsAndPunctuation;
+    if(input.length == 0) {
+        return []
+    }
+    let wordsAndPunctuation = splitWordsAndPunctuation(input);
+    return wordsAndPunctuation;
 }
 
 function splitWordsAndPunctuation(input) {

@@ -40,6 +40,7 @@ mark {
 }
 
 button {
+	outline: none;
 	display: flex;
 	justify-content: end;
 	position: relative;
@@ -48,8 +49,14 @@ button {
 	border-radius: 6px;
 	text-align: center;
 	transition: bottom 0.01s linear;
-	box-shadow: 3px 4px 0px #87a86f;
+	box-shadow: 3px 6px 0px #87a86f;
 }
+
+button:active {
+	outline: none;
+	box-shadow: 3px 2px 0px #666;
+	transform: translateY(4px);
+  }
 
 #text-output {
 	line-height: 35px;
